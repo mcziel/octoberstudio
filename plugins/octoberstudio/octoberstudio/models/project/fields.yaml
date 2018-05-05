@@ -1,0 +1,57 @@
+fields:
+    name:
+        label: 'NOMBRE DEL PROYECTO'
+        span: auto
+        type: text
+    link:
+        label: 'ENLACE (LINK)'
+        span: auto
+        type: text
+    short_description:
+        label: 'DESCRIPCIÓN (CORTA)'
+        size: small
+        span: full
+        type: textarea
+    description:
+        label: DESCRIPCIÓN
+        size: large
+        span: full
+        type: textarea
+    concept:
+        label: CONCEPTO
+        size: large
+        span: auto
+        type: textarea
+    development:
+        label: DESARROLLO
+        size: large
+        span: auto
+        type: textarea
+    thumb_image:
+        label: Thumb
+        type: fileupload
+        mode: image
+        span: auto
+        imageHeight: 50
+        imageWidth: 50
+    featured_image:
+        label: Imagen Principal
+        type: fileupload
+        mode: image
+        span: auto
+        imageHeight: 50
+        imageWidth: 50
+    concept_image:
+        label: Imagen del Concepto
+        type: fileupload
+        mode: image
+        span: auto
+        imageHeight: 50
+        imageWidth: 50
+    development_images:
+        label: Imagenes del Desarrollo
+        type: fileupload
+        mode: image
+        span: auto
+        imageHeight: 50
+        imageWidth: 50

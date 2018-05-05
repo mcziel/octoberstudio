@@ -3,10 +3,18 @@ url = "/"
 layout = "Layout"
 is_hidden = 0
 ==
+<?php
+use OctoberStudio\Octoberstudio\Models\Project;
+
+function onStart(){
+    $this['projects'] = Project::get();
+}
+?>
+==
 <div class="homeScreen">
 	<div class="container">
 		<h1 class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.2s"><small>MÁS QUE SOLO LOS QUE PUEDEN <br class="d-none d-md-block"> HACER TU PÁGINA WEB</small><strong>SOMOS ESTRATEGIA DIGITAL</strong></h1>
-		<a href="#!" class="btn btn-pill btn-dark wow pulse" data-wow-duration="1.5s" data-wow-delay="1s">Conoce nuestro trabajo</a>
+		<a href="{{ "portafolios"|page }}" class="btn btn-pill btn-dark wow pulse" data-wow-duration="1.5s" data-wow-delay="1s">Conoce nuestro trabajo</a>
 	</div>
 	<a href="#ourPassion" class="scrollDown wow infinite pulse"><i class="fas fa-arrow-down"></i><span>Scroll Down</span></a>
 	<div class="bg" style="background-image: url('{{"assets/img/homeScreen.jpg"|theme}}');"></div>
@@ -24,7 +32,7 @@ is_hidden = 0
 		<div class="col-12 col-lg-5 pr-lg-0 order-lg-1">
 			<div class="shadowbox">
 				<p>Hacemos más que una página web, creamos una estrategia digital donde desarrollamos un website como plataforma principal que se convierte en un vendedor 24/7 y nos apoyamos de los medios digitales para compartir y promocionar contenido además de acompañar a nuestros clientes analizando sus métricas para llevarlo a su mejor versión a través de un plan de  mejora continua.</p>
-				<a href="#!" class="btn btn-dark btn-pill wow pulse">Conoce más sobre nosotros</a>
+				<a href="{{ "nosotros"|page }}" class="btn btn-dark btn-pill wow pulse">Conoce más sobre nosotros</a>
 			</div>
 		</div>
 	</div>
@@ -64,45 +72,24 @@ is_hidden = 0
 	</div>
 	<div class="ourWork-slide">
 		<div class="slideshow">
+		    {% for project in projects %}
 			<div class="slide">
 				<div class="shadowbox col-12 col-md ml-md-4 order-md-2">
-					<img src="{{"assets/img/wine-thumb.jpg"|theme}}" class="img-fluid d-block mx-auto">
+					<img src="{{ project.thumb_image.getPath }}" class="img-fluid d-block mx-auto">
 				</div>
 				<div class="shadowbox info col-12 col-md-4 order-lg-1">
 					<h6 class="subtitle">PROYECTO</h6>
-					<h5 class="mt-4 mb-4"><strong>WINLIVERY RD</strong></h5>
-					<p>Primera tienda de vinos online del país con la facilidad de ordenar el vino de tu preferencia desde la comodidad de el celular o la computadora.</p>
-					<a href="#!" class="btn btn-warning btn-pill">Ver proyecto</a>
+					<h5 class="mt-4 mb-4"><strong>{{ project.name }}</strong></h5>
+					<p>{{ project.short_description }}</p>
+					<a href="{{ "portafolio-detalle"|page({slug: project.slug}) }}" class="btn btn-warning btn-pill">Ver proyecto</a>
 				</div>
 			</div>
-			<div class="slide">
-				<div class="shadowbox col-12 col-md ml-md-4 order-md-2">
-					<img src="{{"assets/img/bunker-thumb.jpg"|theme}}" class="img-fluid d-block mx-auto">
-				</div>
-				<div class="shadowbox info col-12 col-md-4 order-lg-1">
-					<h6 class="subtitle">PROYECTO</h6>
-					<h5 class="mt-4 mb-4"><strong>BUNKER</strong></h5>
-					<p>Website institucional para una empresa dedicada a la gestión documental. Una página web para mostrar todos los beneficios de la empresa.</p>
-					<a href="#!" class="btn btn-warning btn-pill">Ver proyecto</a>
-				</div>
-			</div>
-
-			<div class="slide">
-				<div class="shadowbox col-12 col-md ml-md-4 order-md-2">
-					<img src="{{"assets/img/wine-thumb.jpg"|theme}}" class="img-fluid d-block mx-auto">
-				</div>
-				<div class="shadowbox info col-12 col-md-4 order-lg-1">
-					<h6 class="subtitle">PROYECTO</h6>
-					<h5 class="mt-4 mb-4"><strong>SIERRA MOTORS</strong></h5>
-					<p>Aplicación web para mostrar el catalogo de vehiculos de Sierra Motors. Un website de facil navegación y estilo moderno para mostrar todos los detalles.</p>
-					<a href="#!" class="btn btn-warning btn-pill">Ver proyecto</a>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 		<div class="slide-nav">
 			<button class="btn prev"><i class="fas fa-arrow-left"></i></button>
 			<button class="btn next"><i class="fas fa-arrow-right"></i></button>
-			<a href="#!" class="btn btn-pill btn-dark">Ir al portafolios</a>
+			<a href="{{ "portafolios"|page }}" class="btn btn-pill btn-dark">Ir al portafolios</a>
 		</div>
 	</div>
 </div>

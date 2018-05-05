@@ -12,4 +12,8 @@ navigation:
     contacts:
         label: Contactos
         url: octoberstudio/octoberstudio/contact
-        icon: icon-life-ring
+        icon: icon-paper-plane
+    projects:
+        label: Proyectos
+        url: octoberstudio/octoberstudio/project
+        icon: icon-building

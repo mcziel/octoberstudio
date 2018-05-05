@@ -1,0 +1,4 @@
+title: Project
+modelClass: OctoberStudio\Octoberstudio\Models\Project
+toolbar:
+    buttons: reorder_toolbar

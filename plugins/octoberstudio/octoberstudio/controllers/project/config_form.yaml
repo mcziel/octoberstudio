@@ -1,0 +1,10 @@
+name: Project
+form: $/octoberstudio/octoberstudio/models/project/fields.yaml
+modelClass: OctoberStudio\Octoberstudio\Models\Project
+defaultRedirect: octoberstudio/octoberstudio/project
+create:
+    redirect: 'octoberstudio/octoberstudio/project/update/:id'
+    redirectClose: octoberstudio/octoberstudio/project
+update:
+    redirect: octoberstudio/octoberstudio/project
+    redirectClose: octoberstudio/octoberstudio/project

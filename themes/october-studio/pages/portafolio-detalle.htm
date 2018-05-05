@@ -3,18 +3,25 @@ url = "/portafolio/:slug"
 layout = "Layout"
 is_hidden = 0
 ==
+<?php
+use OctoberStudio\Octoberstudio\Models\Project;
+
+function onStart(){
+    $this['project'] = Project::where("slug", $this->param("slug"))->first();
+}
+?>
+==
 <div class="container mt-5">
 	<div class="row">
 		<div class="project-detail-head">
 			<div class="thumb">
 				<h4 class="subtitle right">WEBSITE</h4>
-				<img src="{{"assets/img/portafolio-thumb01.jpg"|theme}}">
+				<img src="{{ project.featured_image.getPath }}">
 			</div>
 			<div class="info">
-				<h1><strong>WINELIVERY RD</strong></h1>
-				<p>Keytar McSweeney's Williamsburg, readymade leggings try-hard 90's street art letterpress hoodie occupy Wes Anderson Banksy. Asymmetrical viral letterpress, Keytar McSweeney's Williamsburg, readymade leggings try-hard 90's street art letterpress hoodie occupy Wes Anderson B</p>
-				<p>Keytar McSweeney's Williamsburg, readymade leggings try-hard 90's street art letterpress hoodie occupy Wes Anderson Banksy. Asymmetrical viral letterpress, Keytar McSweeney's Williamsburg, readymade leggings try-hard 90's street art letterpress hoodie occupy Wes Anderson Banksy. Asymmetrical viral letterpress, </p>
-				<a href="#!" class="btn btn-pill btn-warning"><strong>Visitar website</strong></a>
+				<h1><strong>{{ project.name }}</strong></h1>
+				{{ project.description | raw }}
+				<a href="{{ project.link }}" class="btn btn-pill btn-warning"><strong>Visitar website</strong></a>
 			</div>
 		</div>
 	</div>
@@ -22,14 +29,14 @@ is_hidden = 0
 		<div class="col-12">
 			<h4 class="subtitle">CONCEPTO</h4>
 			<p class="mt-4 pl-lg-5 ml-lg-4">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia blanditiis cum aliquam doloribus, illum voluptatibus eaque tempore at nulla magni omnis necessitatibus asperiores autem expedita corporis, quia officia perspiciatis ad aliquid! Provident commodi quia odit magnam quae tenetur, recusandae expedita!
+				{{ project.concept | raw }}
 			</p>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col mt-5">
 			<div class="shadowbox p-0">
-				<img src="{{"assets/img/project-img01.jpg"|theme}}" class="img-fluid d-block mx-auto">
+				<img src="{{ project.concept_image.getPath }}" class="img-fluid d-block mx-auto">
 			</div>
 		</div>
 	</div>
@@ -37,21 +44,18 @@ is_hidden = 0
 		<div class="col-12 mt-5 mb-5">
 			<h4 class="subtitle">DESARROLLO</h4>
 			<p class="mt-4 pl-lg-5 ml-lg-4">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia blanditiis cum aliquam doloribus, illum voluptatibus eaque tempore at nulla magni omnis necessitatibus asperiores autem expedita corporis, quia officia perspiciatis ad aliquid! Provident commodi quia odit magnam quae tenetur, recusandae expedita!
+				{{ project.development | raw }}
 			</p>
 		</div>
 	</div>
 	<div class="row">
+	    {% for image in project.development_images %}
 		<div class="col-12 col-md mt-4 mb-4 pr-lg-5">
 			<div class="shadowbox p-0">
-				<img src="{{"assets/img/winedelivery-thumb.jpg"|theme}}" class="img-fluid d-block mx-auto">
+				<img src="{{ image.getPath }}" class="img-fluid d-block mx-auto">
 			</div>
 		</div>
-		<div class="col-12 col-md mt-4 mb-4 pl-lg-5">
-			<div class="shadowbox p-0">
-				<img src="{{"assets/img/winedelivery-thumb.jpg"|theme}}" class="img-fluid d-block mx-auto">
-			</div>
-		</div>
+		{% endfor %}
 	</div>
 	<div class="row">
 		<div class="col-12 mt-5 mb-3">

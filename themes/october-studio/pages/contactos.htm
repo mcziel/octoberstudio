@@ -1,0 +1,55 @@
+title = "Contactos"
+url = "/contactos"
+layout = "Layout"
+is_hidden = 0
+==
+<br>
+<div class="headcontent mt-5" style="height:auto;">
+	<div class="container">
+		<h1 class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.2s"><small>VAMOS A CONOCERNOS</small><strong>UN POCO MÁS</strong></h1>
+	</div>
+</div>
+<div class="orangebox">
+	<div class="container mt-5 mb-5">
+		<h2 class="mb-4">
+			<small>AGENDEMOS UNA</small><br>
+			<strong>REUNIÓN</strong>
+		</h2>
+		<form id="onSaveForm" class="row clearfix d-md-block">
+			<div class="form-group col-12 col-md-6 float-left">
+				<label class="uppercase">Nombre</label>
+				<input name="name" type="text" class="form-control form-pill">
+			</div>
+			<div class="form-group col-12 col-md-6 float-right">
+				<label class="uppercase">Apellido</label>
+				<input name="lastname" type="text" class="form-control form-pill">
+			</div>
+			<div class="form-group col-12 col-md-6 float-left">
+				<label class="uppercase">Teléfono</label>
+				<input name="phone" type="text" class="form-control form-pill phone">
+			</div>
+			<div class="form-group col-12 col-md-6 float-right">
+				<label class="uppercase">Correo</label>
+				<input name="email" type="email" class="form-control form-pill">
+			</div>
+			<div class="form-group col-12 col-md-6 float-left">
+				<label class="uppercase">Disponibilidad de horario</label>
+				<select name="schedule" class="form-control form-pill">
+					<option value="Lunes a Viernes">Lunes a Viernes</option>
+					<option value="Fin de Semana">Fin de Semana</option>
+				</select>
+			</div>
+			<div class="form-group col-12 col-md-6 float-right">
+				<label class="uppercase">Mensaje</label>
+				<textarea name="message" rows="4" class="form-control form-pill"></textarea>
+			</div>
+			<div class="form-group col-12 col-md-6 float-left mt-md-3">
+				<button class="btn btn-dark btn-pill" type="button" onClick="onSaveForm();">Enviar solicitud</button>
+			</div>
+			<div class="form-group col-12 col-md-6 float-left mt-md-3" id="onSaveFormMessage" style="display:none;">
+				<p style="font-weight:bold;">Mensaje enviado correctamente, te esperemos contactando en las proximas horas.</p>
+			</div>
+			<input type="hidden" name="type" value="contactos">
+		</form>
+	</div>
+</div>

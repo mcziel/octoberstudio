@@ -1,0 +1,110 @@
+==
+<?php
+use OctoberStudio\Octoberstudio\Models\Contact;
+
+function onSaveForm(){
+    $contact = new Contact;
+    $contact->name = post('name');
+    $contact->lastname = post('lastname');
+    $contact->phone = post('phone');
+    $contact->email = post('email');
+    $contact->message = post('message');
+    if (post('type') == "contactos") {
+        $contact->schedule = post('schedule');
+    } else if (post('type') == "cotizar") {
+        $contact->service = post('service');
+    }
+    $contact->type = post('type');
+    $contact->save();
+}
+?>
+==
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
+		<link href="{{ ['assets/css/fontawesome-all.css','assets/css/style.css','assets/css/animate.css']|theme }}" rel="stylesheet">
+		<title>October Studio</title>
+	</head>
+	<body>
+		<header id="header">
+			<div class="wrap">
+				<a href="{{ "inicio"|page }}" class="logo"><img src="{{"assets/img/octoberStudio-logo.png"|theme}}"></a>
+				<div class="mainnav">
+					<ul class="mainmenu">
+						<li><a href="{{ "nosotros"|page }}">Sobre Nosotros</a></li>
+						<li><a href="{{ "servicios"|page }}">Servicios</a></li>
+						<li><a href="{{ "portafolios"|page }}">Portafolio</a></li>
+						<li><a href="{{ "contactos"|page }}">Contacto</a></li>
+					</ul>
+					<a href="{{ "cotizar"|page }}" class="btn btn-warning">Solicita una cotización</a>
+				</div>
+				<button class="btn d-lg-none" onclick="$('#header .mainnav').toggleClass('open');"><i class="fas fa-bars"></i></button>
+			</div>
+		</header>
+        <main id="content">
+            {% page %}
+            {% partial "readyToWork" %}
+        </main>
+		<footer id="footer" class="pt-5">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="col-6 col-md-3 col-lg-2">
+						<a href="{{ "inicio"|page }}"><img src="{{"assets/img/OSbwhite-logo.png"|theme}}" class="img-fluid d-block mx-auto"></a>
+					</div>
+					<div class="w-100 d-block d-lg-none"></div>
+					<div class="col offset-md-1">
+						<ul>
+							<li><a href="mailto:hola@octoberstudio.com.do"><small>Contactos</small>hola@octoberstudio.com.do</a></li>
+							<li><a href="{{ "nosotros"|page }}">Sobre Nosotros</a></li>
+							<li><a href="{{ "servicios"|page }}">Servicios</a></li>
+							<li><a href="{{ "portafolio"|page }}">Portafolio</a></li>
+							<li><a href="{{ "contactos"|page }}">Contacto</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<p class="copy mt-5">Design and Developmente with love by October Studio</p>
+		</footer>
+
+        <script src="{{ ['@jquery','@framework','@framework.extras','assets/js/bootstrap.min.js','assets/js/slick.min.js','assets/js/jqfunction.js','assets/js/wow.min.js','assets/js/jquery.mask.js']|theme }}"></script>
+        <script>
+            new WOW().init();
+        </script>
+        {% scripts %}
+        <script type="text/javascript">
+        $(document).ready(function(){
+           $('.phone').mask('000-000-0000'); 
+        });
+        
+        function onSaveForm()
+        {
+        	var error = true; var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        	
+        	if($('input[name=name]').val() === ''){$('input[name=name]').css('border', '1px solid red');error = false;} 
+        	else{$('input[name=name]').css('border', '');}
+        	
+        	if($('input[name=lastname]').val() === ''){$('input[name=lastname]').css('border', '1px solid red');error = false;} 
+        	else{$('input[name=lastname]').css('border', '');}
+        	
+        	if($('input[name=phone]').val() === ''){$('input[name=phone]').css('border', '1px solid red');error = false;} 
+        	else {$('input[name=phone]').css('border', '');}
+        	
+        	if(!regex.test($('input[name=email]').val())){$('input[name=email]').css('border', '1px solid red');error = false;} 
+        	else {$('input[name=email]').css('border', '');}
+        	
+        	if($('textarea[name=message]').val() === ''){$('textarea[name=message]').css('border', '1px solid red');error = false;} 
+        	else {$('textarea[name=message]').css('border', '');}
+        	
+        	if(error)
+        	{
+        		$('#onSaveForm').request('onSaveForm', {data: $('#onSaveForm').serialize()});
+        		$('#onSaveFormMessage').fadeIn();
+        		$('#onSaveForm').trigger("reset");
+        	} 
+        	else { return false; }
+        }
+    </script>
+	</body>
+</html>

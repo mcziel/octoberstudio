@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table octoberstudio_octoberstudio_contacts'
+    - builder_table_create_octoberstudio_octoberstudio_contacts.php
+1.0.3:
+    - 'Updated table octoberstudio_octoberstudio_contacts'
+    - builder_table_update_octoberstudio_octoberstudio_contacts.php
+1.0.4:
+    - 'Updated table octoberstudio_octoberstudio_contacts'
+    - builder_table_update_octoberstudio_octoberstudio_contacts_2.php

@@ -1,0 +1,10 @@
+name: Contact
+form: $/octoberstudio/octoberstudio/models/contact/fields.yaml
+modelClass: OctoberStudio\Octoberstudio\Models\Contact
+defaultRedirect: octoberstudio/octoberstudio/contact
+create:
+    redirect: 'octoberstudio/octoberstudio/contact/update/:id'
+    redirectClose: octoberstudio/octoberstudio/contact
+update:
+    redirect: octoberstudio/octoberstudio/contact
+    redirectClose: octoberstudio/octoberstudio/contact

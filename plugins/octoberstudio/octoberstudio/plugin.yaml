@@ -1,0 +1,15 @@
+plugin:
+    name: 'octoberstudio.octoberstudio::lang.plugin.name'
+    description: 'octoberstudio.octoberstudio::lang.plugin.description'
+    author: 'October Studio'
+    icon: oc-icon-calendar
+    homepage: ''
+permissions:
+    all:
+        tab: all
+        label: all
+navigation:
+    contacts:
+        label: Contactos
+        url: octoberstudio/octoberstudio/contact
+        icon: icon-life-ring

@@ -1,0 +1,33 @@
+fields:
+    name:
+        label: NOMBRE
+        span: auto
+        type: text
+    lastname:
+        label: APELLIDO
+        span: auto
+        type: text
+    phone:
+        label: TELEFONO
+        span: auto
+        type: text
+    email:
+        label: EMAIL
+        span: auto
+        type: text
+    message:
+        label: MENSAJE
+        span: auto
+        type: text
+    schedule:
+        label: HORARIO
+        span: auto
+        type: text
+    service:
+        label: SERVICIO
+        span: auto
+        type: text
+    type:
+        label: TIPO
+        span: auto
+        type: text
